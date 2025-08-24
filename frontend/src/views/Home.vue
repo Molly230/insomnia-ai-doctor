@@ -36,7 +36,7 @@
       <el-col :xs="24" :sm="12" :md="6">
         <el-card class="feature-card" shadow="hover">
           <div class="feature-content">
-            <el-icon class="feature-icon"><Medicine /></el-icon>
+            <el-icon class="feature-icon"><Operation /></el-icon>
             <h3>个性化方案</h3>
             <p>中药方剂、外治法、食疗三位一体</p>
           </div>
@@ -111,7 +111,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { 
-  Moon, ChatLineRound, DataAnalysis, Medicine, Reading, 
+  Moon, ChatLineRound, DataAnalysis, Operation, Reading, 
   Edit, Cpu, Check, Tickets, Right 
 } from '@element-plus/icons-vue'
 
