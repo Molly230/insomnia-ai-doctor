@@ -3,7 +3,7 @@
     <el-card class="knowledge-card" shadow="hover">
       <template #header>
         <div class="card-header">
-          <el-icon><Reading /></el-icon>
+          <el-icon><Document /></el-icon>
           <span>中医失眠知识库</span>
         </div>
       </template>
@@ -172,7 +172,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Reading } from '@element-plus/icons-vue'
+import { Document } from '@element-plus/icons-vue'
 
 const activeTab = ref('theory')
 const activeCollapse = ref(['1'])

@@ -3,7 +3,7 @@
     <el-card class="consultation-card" shadow="hover">
       <template #header>
         <div class="card-header">
-          <el-icon><EditPen /></el-icon>
+          <el-icon><Edit /></el-icon>
           <span>失眠问诊表</span>
           <div class="progress-info">
             问题 {{ currentQuestionIndex + 1 }} / {{ totalQuestions }}
@@ -151,7 +151,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElLoading } from 'element-plus'
 import { 
-  EditPen, ArrowLeft, ArrowRight, Check, Right, List 
+  Edit, ArrowLeft, ArrowRight, Check, Right, List 
 } from '@element-plus/icons-vue'
 import { getQuestions, submitQuestionnaireAnswers } from '../api/consultation'
 

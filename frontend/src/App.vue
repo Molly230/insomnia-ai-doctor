@@ -4,7 +4,7 @@
       <!-- 头部导航 -->
       <el-header class="app-header">
         <div class="logo">
-          <el-icon><Stethoscope /></el-icon>
+          <el-icon><Tools /></el-icon>
           <span>失眠智能诊疗系统</span>
         </div>
         <div class="nav-menu">
@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import { Stethoscope } from '@element-plus/icons-vue'
+import { Tools } from '@element-plus/icons-vue'
 </script>
 
 <style scoped>

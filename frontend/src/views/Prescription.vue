@@ -3,7 +3,7 @@
     <el-card class="prescription-card" shadow="hover">
       <template #header>
         <div class="card-header">
-          <el-icon><Operation /></el-icon>
+          <el-icon><Setting /></el-icon>
           <span>个性化治疗方案</span>
         </div>
       </template>
@@ -26,7 +26,7 @@
       <!-- 中药方剂 -->
       <div class="treatment-section">
         <h2 class="section-title">
-          <el-icon><Cherry /></el-icon>
+          <el-icon><Apple /></el-icon>
           中药调理方案
         </h2>
         
@@ -54,7 +54,7 @@
       <!-- 外治疗法 -->
       <div class="treatment-section">
         <h2 class="section-title">
-          <el-icon><Connection /></el-icon>
+          <el-icon><Link /></el-icon>
           外治疗法
         </h2>
 
@@ -90,7 +90,7 @@
       <!-- 食疗调理 -->
       <div class="treatment-section">
         <h2 class="section-title">
-          <el-icon><Bowl /></el-icon>
+          <el-icon><Coffee /></el-icon>
           食疗调理方案
         </h2>
 
@@ -200,7 +200,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { Operation, Cherry, Connection, Bowl, Sunny, ArrowLeft, Download, Refresh } from '@element-plus/icons-vue'
+import { Setting, Apple, Link, Coffee, Sunny, ArrowLeft, Download, Refresh } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
 const router = useRouter()

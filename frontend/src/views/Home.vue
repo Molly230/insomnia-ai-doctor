@@ -16,7 +16,7 @@
       <el-col :xs="24" :sm="12" :md="6">
         <el-card class="feature-card" shadow="hover" @click="goToConsultation">
           <div class="feature-content">
-            <el-icon class="feature-icon"><ChatLineRound /></el-icon>
+            <el-icon class="feature-icon"><ChatRound /></el-icon>
             <h3>智能问诊</h3>
             <p>19项专业问题，全面了解您的睡眠状况</p>
           </div>
@@ -26,7 +26,7 @@
       <el-col :xs="24" :sm="12" :md="6">
         <el-card class="feature-card" shadow="hover">
           <div class="feature-content">
-            <el-icon class="feature-icon"><DataAnalysis /></el-icon>
+            <el-icon class="feature-icon"><TrendCharts /></el-icon>
             <h3>二元诊断</h3>
             <p>独创二元诊断系统，精准定位证型</p>
           </div>
@@ -36,7 +36,7 @@
       <el-col :xs="24" :sm="12" :md="6">
         <el-card class="feature-card" shadow="hover">
           <div class="feature-content">
-            <el-icon class="feature-icon"><Operation /></el-icon>
+            <el-icon class="feature-icon"><Setting /></el-icon>
             <h3>个性化方案</h3>
             <p>中药方剂、外治法、食疗三位一体</p>
           </div>
@@ -46,7 +46,7 @@
       <el-col :xs="24" :sm="12" :md="6">
         <el-card class="feature-card" shadow="hover">
           <div class="feature-content">
-            <el-icon class="feature-icon"><Reading /></el-icon>
+            <el-icon class="feature-icon"><Document /></el-icon>
             <h3>专业知识</h3>
             <p>丰富的中医失眠知识库，持续学习</p>
           </div>
@@ -111,7 +111,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { 
-  Moon, ChatLineRound, DataAnalysis, Operation, Reading, 
+  Moon, ChatRound, TrendCharts, Setting, Document, 
   Edit, Cpu, Check, Tickets, Right 
 } from '@element-plus/icons-vue'
 

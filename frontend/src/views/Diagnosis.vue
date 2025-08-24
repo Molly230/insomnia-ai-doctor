@@ -3,7 +3,7 @@
     <el-card class="diagnosis-card" shadow="hover">
       <template #header>
         <div class="card-header">
-          <el-icon><DataAnalysis /></el-icon>
+          <el-icon><TrendCharts /></el-icon>
           <span>诊断结果</span>
         </div>
       </template>
@@ -96,7 +96,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { DataAnalysis, Right, Refresh } from '@element-plus/icons-vue'
+import { TrendCharts, Right, Refresh } from '@element-plus/icons-vue'
 
 const router = useRouter()
 
