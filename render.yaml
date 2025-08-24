@@ -1,0 +1,23 @@
+services:
+  # 后端 Flask API
+  - type: web
+    name: insomnia-ai-doctor-backend
+    runtime: python3
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && python run.py"
+    plan: free
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: PYTHONPATH
+        value: /opt/render/project/src/backend
+    
+  # 前端静态文件 (可选，也可以用Render的静态站点)
+  - type: static
+    name: insomnia-ai-doctor-frontend  
+    staticPublishPath: ./frontend/dist
+    buildCommand: "cd frontend && npm install && npm run build"
+    pullRequestPreviewsEnabled: false
+    plan: free
