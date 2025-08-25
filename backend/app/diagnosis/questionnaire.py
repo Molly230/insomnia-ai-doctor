@@ -106,7 +106,8 @@ class InsomniaQuestionnaire:
                 QuestionOption("反复清醒", "反复清醒"),
                 QuestionOption("整夜做梦", "整夜做梦"),
                 QuestionOption("晨起疲倦", "晨起疲倦"),
-                QuestionOption("难以入眠", "难以入眠")
+                QuestionOption("难以入眠", "难以入眠"),
+                QuestionOption("无", "无")
             ],
             category="睡眠困扰"
         ),
@@ -119,7 +120,8 @@ class InsomniaQuestionnaire:
                 QuestionOption("非苯二氮卓类：唑吡坦、右佐匹克隆", "非苯二氮卓类：唑吡坦、右佐匹克隆"),
                 QuestionOption("褪黑素受体激动剂：雷美替胺", "褪黑素受体激动剂：雷美替胺"),
                 QuestionOption("食欲素受体拮抗剂：苏沃雷生", "食欲素受体拮抗剂：苏沃雷生"),
-                QuestionOption("抗抑郁药物：曲唑酮、米氮平", "抗抑郁药物：曲唑酮、米氮平")
+                QuestionOption("抗抑郁药物：曲唑酮、米氮平", "抗抑郁药物：曲唑酮、米氮平"),
+                QuestionOption("无", "无")
             ],
             category="用药史"
         ),
@@ -147,17 +149,18 @@ class InsomniaQuestionnaire:
         Question(
             id=11,
             text="您近期有无如下问题？",
-            type=QuestionType.SINGLE_CHOICE,
+            type=QuestionType.MULTIPLE_CHOICE,
             options=[
                 QuestionOption("时有耳鸣", "时有耳鸣"),
-                QuestionOption("时实疲乏，乏力周身疲", "时实疲乏，乏力周身疲"),
-                QuestionOption("腹胀/腹泻不适", "腹胀/腹泻不适")
+                QuestionOption("时发痔疮，肛周瘙痒", "时发痔疮，肛周瘙痒"),
+                QuestionOption("腹胀/腹部不适", "腹胀/腹部不适"),
+                QuestionOption("无", "无")
             ],
             category="身体症状"
         ),
         Question(
             id=12,
-            text="您是否经常周身酸痛/骨节疼痛？",
+            text="您是否经常周身酸痛/脊柱疼痛？",
             type=QuestionType.SINGLE_CHOICE,
             options=[
                 QuestionOption("是", "是"),
@@ -168,17 +171,18 @@ class InsomniaQuestionnaire:
         Question(
             id=13,
             text="您近期有无如下问题？",
-            type=QuestionType.SINGLE_CHOICE,
+            type=QuestionType.MULTIPLE_CHOICE,
             options=[
-                QuestionOption("夜间遗精/遗尿，心悸加速", "夜间遗精/遗尿，心悸加速"),
-                QuestionOption("皮肤蚊疹，发骚麻疹", "皮肤蚊疹，发骚麻疹"),
-                QuestionOption("咳嗽/气短/难呼气", "咳嗽/气短/难呼气")
+                QuestionOption("夜间憋醒/胸闷，心跳加速", "夜间憋醒/胸闷，心跳加速"),
+                QuestionOption("皮肤瘙痒，发荨麻疹", "皮肤瘙痒，发荨麻疹"),
+                QuestionOption("咳嗽/气短/喘促等", "咳嗽/气短/喘促等"),
+                QuestionOption("无", "无")
             ],
             category="特殊症状"
         ),
         Question(
             id=14,
-            text="您是否持续电子产品超过3小时/天？",
+            text="您是否接触电子产品超过3小时/天？",
             type=QuestionType.SINGLE_CHOICE,
             options=[
                 QuestionOption("是", "是"),
@@ -189,11 +193,12 @@ class InsomniaQuestionnaire:
         Question(
             id=15,
             text="您近期有无如下问题？",
-            type=QuestionType.SINGLE_CHOICE,
+            type=QuestionType.MULTIPLE_CHOICE,
             options=[
                 QuestionOption("面色暗黑，无精打采", "面色暗黑，无精打采"),
                 QuestionOption("容易受惊，害怕", "容易受惊，害怕"),
-                QuestionOption("夜间盗汗", "夜间盗汗")
+                QuestionOption("夜间盗汗", "夜间盗汗"),
+                QuestionOption("无", "无")
             ],
             category="中医症状"
         ),
@@ -210,9 +215,12 @@ class InsomniaQuestionnaire:
         Question(
             id=17,
             text="您近期有无如下问题？",
-            type=QuestionType.SINGLE_CHOICE,
+            type=QuestionType.MULTIPLE_CHOICE,
             options=[
-                QuestionOption("腰酸无力", "腰酸无力")
+                QuestionOption("腰酸无力", "腰酸无力"),
+                QuestionOption("身寒怕冷", "身寒怕冷"),
+                QuestionOption("夜尿频繁", "夜尿频繁"),
+                QuestionOption("无", "无")
             ],
             category="肾虚症状"
         ),
@@ -233,9 +241,43 @@ class InsomniaQuestionnaire:
             options=[
                 QuestionOption("好忘事，记忆力下降", "好忘事，记忆力下降"),
                 QuestionOption("白天嗜睡", "白天嗜睡"),
-                QuestionOption("偏头痛/头痛", "偏头痛/头痛")
+                QuestionOption("偏头痛/头痛", "偏头痛/头痛"),
+                QuestionOption("无", "无")
             ],
             category="认知功能"
+        ),
+        Question(
+            id=20,
+            text="请选择您的舌象特征（请对镜观察）：",
+            type=QuestionType.SINGLE_CHOICE,
+            options=[
+                QuestionOption("淡红舌苔薄白", "淡红舌苔薄白"),
+                QuestionOption("淡胖舌", "淡胖舌"),
+                QuestionOption("红舌少苔", "红舌少苔"),
+                QuestionOption("红舌少津", "红舌少津"),
+                QuestionOption("淡胖舌苔白", "淡胖舌苔白"),
+                QuestionOption("暗红舌或有瘀点", "暗红舌或有瘀点"),
+                QuestionOption("紫暗舌有瘀斑", "紫暗舌有瘀斑"),
+                QuestionOption("淡暗舌苔厚腻", "淡暗舌苔厚腻")
+            ],
+            category="舌象"
+        ),
+        Question(
+            id=21,
+            text="请选择您的脉象特征（请静坐后自测脉搏）：",
+            type=QuestionType.SINGLE_CHOICE,
+            options=[
+                QuestionOption("沉细脉（脉搏深沉细小）", "沉细脉"),
+                QuestionOption("弱脉（脉搏软弱无力）", "弱脉"),
+                QuestionOption("细脉（脉搏细如线）", "细脉"),
+                QuestionOption("弦细脉（脉搏紧张细小）", "弦细脉"),
+                QuestionOption("细数脉（脉搏细小快速）", "细数脉"),
+                QuestionOption("沉迟脉（脉搏深沉缓慢）", "沉迟脉"),
+                QuestionOption("弦脉（脉搏紧张有力）", "弦脉"),
+                QuestionOption("沉涩脉（脉搏深沉滞涩）", "沉涩脉"),
+                QuestionOption("沉弱脉（脉搏深沉微弱）", "沉弱脉")
+            ],
+            category="脉象"
         )
     ]
 

@@ -15,9 +15,11 @@
           >
             <el-menu-item index="/">首页</el-menu-item>
             <el-menu-item index="/consultation">问诊咨询</el-menu-item>
-            <el-menu-item index="/diagnosis">诊断结果</el-menu-item>
             <el-menu-item index="/prescription">处方建议</el-menu-item>
+            <el-menu-item index="/doctor-consultation">专业医生</el-menu-item>
             <el-menu-item index="/knowledge">知识库</el-menu-item>
+            <el-menu-item index="/chat">智能助手</el-menu-item>
+            <el-menu-item index="/admin">管理后台</el-menu-item>
           </el-menu>
         </div>
       </el-header>

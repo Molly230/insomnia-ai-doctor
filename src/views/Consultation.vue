@@ -4,7 +4,7 @@
       <template #header>
         <div class="card-header">
           <el-icon><Edit /></el-icon>
-          <span>失眠问诊表</span>
+          <span>智能问诊</span>
           <div class="progress-info">
             问题 {{ currentQuestionIndex + 1 }} / {{ totalQuestions }}
           </div>
@@ -35,14 +35,21 @@
             @change="handleAnswerChange"
             class="radio-group"
           >
-            <el-radio 
-              v-for="option in currentQuestion.options" 
-              :key="option.value"
-              :label="option.value"
-              class="radio-option"
-            >
-              {{ option.label }}
-            </el-radio>
+            <el-row :gutter="12" justify="start">
+              <el-col 
+                :span="getColSpan(currentQuestion.options.length)"
+                v-for="option in currentQuestion.options" 
+                :key="option.value"
+                class="option-col"
+              >
+                <el-radio 
+                  :label="option.value"
+                  class="radio-option"
+                >
+                  {{ option.label }}
+                </el-radio>
+              </el-col>
+            </el-row>
           </el-radio-group>
         </div>
 
@@ -53,14 +60,21 @@
             @change="handleMultipleAnswerChange"
             class="checkbox-group"
           >
-            <el-checkbox 
-              v-for="option in currentQuestion.options" 
-              :key="option.value"
-              :label="option.value"
-              class="checkbox-option"
-            >
-              {{ option.label }}
-            </el-checkbox>
+            <el-row :gutter="12" justify="start">
+              <el-col 
+                :span="getColSpan(currentQuestion.options.length)"
+                v-for="option in currentQuestion.options" 
+                :key="option.value"
+                class="option-col"
+              >
+                <el-checkbox 
+                  :label="option.value"
+                  class="checkbox-option"
+                >
+                  {{ option.label }}
+                </el-checkbox>
+              </el-col>
+            </el-row>
           </el-checkbox-group>
         </div>
 
@@ -149,7 +163,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage, ElLoading } from 'element-plus'
+import { ElMessage } from 'element-plus'
 import { 
   Edit, ArrowLeft, ArrowRight, Check, Right, List 
 } from '@element-plus/icons-vue'
@@ -271,14 +285,14 @@ const submitAnswers = async () => {
       selected_options: answers
     }))
 
-    await submitQuestionnaireAnswers({ answers: formattedAnswers })
+    await submitQuestionnaireAnswers(formattedAnswers)
     
     ElMessage.success('问诊提交成功')
     isCompleted.value = true
     
-    // 3秒后跳转到诊断结果页面
+    // 3秒后跳转到治疗方案页面
     setTimeout(() => {
-      router.push('/diagnosis')
+      router.push('/prescription')
     }, 3000)
     
   } catch (error) {
@@ -290,7 +304,35 @@ const submitAnswers = async () => {
 }
 
 const viewResults = () => {
-  router.push('/diagnosis')
+  router.push('/prescription')
+}
+
+// 根据选项内容长度动态计算最佳列宽
+const getColSpan = (optionCount) => {
+  if (!currentQuestion.value?.options) return 8
+  
+  // 计算最长选项的字符长度
+  const maxLength = Math.max(...currentQuestion.value.options.map(opt => opt.label.length))
+  
+  // 特殊处理：检查是否有"4次及以上"这样的选项
+  const hasComplexText = currentQuestion.value.options.some(opt => 
+    opt.label.includes('次及以上') || opt.label.includes('以上') || opt.label.includes('以下')
+  )
+  
+  // 根据内容特征决定布局
+  if (maxLength >= 15) {
+    // 非常长的选项（如药物名称）：每行2个
+    return 12
+  } else if (hasComplexText || maxLength >= 6) {
+    // 包含复杂描述的选项：每行2个，给足空间
+    return 12
+  } else if (maxLength >= 3) {
+    // 中等长度选项：每行3个
+    return 8
+  } else {
+    // 短选项（如"是/否"）：每行4个
+    return 6
+  }
 }
 
 const getQuestionTypeColor = (category) => {
@@ -314,7 +356,7 @@ onMounted(() => {
 
 <style scoped>
 .consultation {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -367,23 +409,64 @@ onMounted(() => {
 
 .radio-group,
 .checkbox-group {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  width: 100%;
+}
+
+.option-col {
+  margin-bottom: 12px;
 }
 
 .radio-option,
 .checkbox-option {
-  padding: 15px;
+  width: 100%;
+  padding: 12px 16px;
   border: 1px solid #e4e7ed;
   border-radius: 8px;
   transition: all 0.3s;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 120px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .radio-option:hover,
 .checkbox-option:hover {
   border-color: #409eff;
   background: #f0f9ff;
+}
+
+.radio-option.is-checked,
+.checkbox-option.is-checked {
+  border-color: #409eff;
+  background: #f0f9ff;
+}
+
+/* 覆盖element-plus的默认样式 */
+:deep(.el-radio) {
+  width: 100%;
+  margin: 0;
+}
+
+:deep(.el-checkbox) {
+  width: 100%;
+  margin: 0;
+}
+
+:deep(.el-radio__label),
+:deep(.el-checkbox__label) {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #303133;
+  padding: 0 8px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .navigation-buttons {
@@ -449,5 +532,17 @@ onMounted(() => {
   border-color: #409eff;
   background: #409eff;
   color: white;
+}
+
+@media (max-width: 768px) {
+  .option-col {
+    /* 移动端单列显示 */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .option-col {
+    /* 平板端2列显示 */
+  }
 }
 </style>

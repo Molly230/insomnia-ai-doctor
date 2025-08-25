@@ -8,6 +8,12 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-here')
     DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
     
+    # 数据库配置
+    DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///insomnia_diagnosis.db')
+    SQLALCHEMY_DATABASE_URI = DATABASE_URL
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_ECHO = DEBUG  # 在调试模式下显示SQL语句
+    
     # 微信公众号配置
     WECHAT_APP_ID = os.getenv('WECHAT_APP_ID', '')
     WECHAT_APP_SECRET = os.getenv('WECHAT_APP_SECRET', '')

@@ -202,7 +202,7 @@ def complete_consultation(openid: str, session: dict) -> str:
 def get_user_report(openid: str, session: dict) -> str:
     """获取用户报告"""
     if session['status'] != 'completed':
-        return "您还没有完成问诊，请先点击"开始问诊"完成评估。"
+        return "您还没有完成问诊，请先点击'开始问诊'完成评估。"
     
     # TODO: 生成详细报告
     diagnosis_result = {

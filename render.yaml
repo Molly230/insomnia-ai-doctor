@@ -3,21 +3,23 @@ services:
   - type: web
     name: insomnia-ai-doctor-backend
     runtime: python3
-    buildCommand: "cd backend && pip install -r requirements.txt"
-    startCommand: "cd backend && python run.py"
+    buildCommand: "cd backend && pip install -r requirements.txt && python init_database.py"
+    startCommand: "cd backend && python run_app_with_db.py"
     plan: free
     envVars:
       - key: FLASK_ENV
         value: production
+      - key: FLASK_DEBUG
+        value: false
       - key: PORT
         value: 10000
       - key: PYTHONPATH
         value: /opt/render/project/src/backend
     
-  # 前端静态文件 (可选，也可以用Render的静态站点)
+  # 前端静态文件
   - type: static
     name: insomnia-ai-doctor-frontend  
-    staticPublishPath: ./frontend/dist
-    buildCommand: "cd frontend && npm install && npm run build"
+    staticPublishPath: ./dist
+    buildCommand: "npm install && npm run build"
     pullRequestPreviewsEnabled: false
     plan: free
